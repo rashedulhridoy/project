@@ -7,4 +7,6 @@
 <p> pip install pyfiglet </p><br>
 <p> pip install random </p><br>
 <p> cd project </p><br>
-<p> python main.py or python3 main.py </p>
+<p> python main.py or python3 main.py </p><br>
+<h2> Screenshot </h2>
+![image](https://github.com/rashedulhridoy/project/assets/150352851/ddd4b1fd-4192-4365-b759-341a2e57a230)
