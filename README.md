@@ -9,5 +9,5 @@
 <p> cd project </p><br>
 <p> python main.py or python3 main.py </p><br>
 <h2> Screenshot </h2>
-![434386851_1738312790029881_5535999612859121894_n](https://github.com/rashedulhridoy/project/assets/150352851/81af84b7-dede-4722-9ecd-f6bed5413109)
+<img src="https://i.postimg.cc/y8Q4L54k/434386851-1738312790029881-5535999612859121894-n.png">
 
