@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Select Options</title>
+    <style>
+        * {
+            border: 0;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        :root {
+            --hue: 223;
+            --bg: hsl(var(--hue), 90%, 90%);
+            --fg: hsl(var(--hue), 90%, 10%);
+            --primary: green;
+            --trans-dur: 0.3s;
+            --trans-timing: cubic-bezier(0.65, 0, 0.35, 1);
+            font-size: calc(16px + (24 - 16) * (100vw - 320px) / (2560 - 320));
+        }
+        body, input {
+            color: white;
+            font: 1em/1.5 "DM Sans", sans-serif;
+        }
+        body {
+            background-color: black;
+            display: flex;
+            height: 100vh;
+            transition: background-color var(--trans-dur), color var(--trans-dur);
+        }
+        main {
+            margin: auto;
+            padding: 1.5em 0;
+            width: 100%;
+        }
+        form {
+            margin: auto;
+            max-width: 20em;
+            position: relative;
+            width: calc(100% - 3em);
+        }
+        label, input[type="checkbox"] {
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+        }
+        label {
+            background-color: white;
+            border-radius: 0.75em;
+            display: flex;
+            align-items: center;
+            padding: 1.5em;
+            transition: background-color var(--trans-dur);
+        }
+        input[type="checkbox"] {
+            background-color: hsl(0, 0%, 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 0 0.0625em hsl(var(--hue), 90%, 80%),
+                0 0.125em 0.125em 0.0625em hsla(var(--hue), 90%, 10%, 0.3);
+            flex-shrink: 0;
+            margin-inline-end: 1em;
+            outline: transparent;
+            position: relative;
+            width: 1.5em;
+            height: 1.5em;
+            transition: background-color var(--trans-dur), box-shadow var(--trans-dur);
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        input[type="checkbox"]:before,
+        input[type="checkbox"]:after {
+            border-radius: 50%;
+            content: "";
+            display: block;
+            position: absolute;
+            transform: scale(0);
+            transition: transform var(--trans-dur) var(--trans-timing);
+        }
+        input[type="checkbox"]:before {
+            box-shadow: 0 0 0 0.5em var(--primary) inset, 0 0 0 0.0625em var(--primary);
+            top: -0.0625em;
+            left: -0.0625em;
+            width: calc(100% + 0.125em);
+            height: calc(100% + 0.125em);
+        }
+        input[type="checkbox"]:after {
+            background-color: hsl(0, 0%, 100%);
+            top: 25%;
+            left: 25%;
+            width: 50%;
+            height: 50%;
+        }
+        input[type="checkbox"]:checked:before,
+        input[type="checkbox"]:checked:after {
+            transform: scale(1);
+        }
+        label:has(input[type="checkbox"]:checked),
+        label:has(input[type="checkbox"]:not(:checked)):hover {
+            background-color: hsla(0, 100%, 50%, 0.5);
+        }
+        .selection {
+            border-radius: 0.75em;
+            box-shadow: 0 0 0 0.125em var(--primary) inset;
+            display: none;
+            pointer-events: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4.5em;
+            transition: transform var(--trans-dur) var(--trans-timing);
+        }
+        label:has(input[type="checkbox"]:checked) ~ .selection {
+            animation: fade-in var(--trans-dur) var(--trans-timing);
+            display: inherit;
+        }
+        label:nth-of-type(2):has(input[type="checkbox"]:checked) ~ .selection {
+            transform: translateY(100%);
+        }
+        label:nth-of-type(3):has(input[type="checkbox"]:checked) ~ .selection {
+            transform: translateY(100%);
+        }
+        .truncate {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 25px;
+        }
+
+        
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: hsl(var(--hue), 90%, 10%);
+                --fg: hsl(var(--hue), 90%, 90%);
+            }
+            label {
+                background-color: hsla(var(--hue), 90%, 30%, 0);
+            }
+            label:has(input[type="checkbox"]:checked),
+            label:has(input[type="checkbox"]:not(:checked)):hover {
+                background-color: #333;
+            }
+            input[type="checkbox"] {
+                background-color: transparent;
+                box-shadow: grey;
+            }
+        }
+
+        
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+            
+        }
+        P {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <p> These All are My Favourite Markup and Programming Language... What's Your ?</p>
+        <br>
+        <form>
+            <label>
+                <input type="checkbox" name="inventor" value="html">
+                <span class="truncate">HTML <img type="icon" src="html.png" height="25px" width="25px"></span>
+            </label>
+            <br>
+            <label>
+                <input type="checkbox" name="inventor" value="css">
+                <span class="truncate">CSS <img type="icon" src="css-3.png" height="25px" width="25px"></span>
+            </label>
+            <br>
+            <label>
+                <input type="checkbox" name="inventor" value="javascript">
+                <span class="truncate">JAVASCRIPT <img type="icon" src="js.png" height="25px" width="25px"></span>
+            </label>
+            <br>
+            <label>
+                <input type="checkbox" name="inventor" value="php">
+                <span class="truncate">PHP <img type="icon" src="php (1).png" height="25px" width="25px"></span>
+            </label>
+            <br>
+            <label>
+                <input type="checkbox" name="inventor" value="python">
+                <span class="truncate">PYTHON <img type="icon" src="python.png" height="25px" width="25px"></span>
+            </label>
+            <br>
+            <label>
+                <input type="checkbox" name="inventor" value="python">
+                <span class="truncate"> C <img type="icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/C_Programming_Language.svg/1200px-C_Programming_Language.svg.png" height="25px" width="25px"></span>
+            </label>
+            <br>
+            <label>
+                <input type="checkbox" name="inventor" value="python">
+                <span class="truncate"> C++ <img type="icon" src="c-.png" height="25px" width="25px"></span>
+            </label>
+            <br>
+            <label>
+                <input type="checkbox" name="inventor" value="python">
+                <span class="truncate"> Vbs Script <img type="icon" src="https://cdn.prod.website-files.com/6047a9e35e5dc54ac86ddd90/63018734d8a92027c8796b82_261e43d7.png" height="25px" width="25px"></span>
+            </label>
+            <br>
+            <label>
+                <input type="checkbox" name="inventor" value="python">
+                <span class="truncate"> Bash <img type="icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Bash_Logo_Colored.svg/2048px-Bash_Logo_Colored.svg.png" height="25px" width="25px"></span>
+            </label>
+            <br>
+            <label>
+                <input type="checkbox" name="inventor" value="python">
+                <span class="truncate"> Markdown <img type="icon" src="https://icons.veryicon.com/png/o/business/vscode-program-item-icon/markdown-4.png" height="25px" width="25px"></span>
+            </label>
+            <br>
+            <label>
+                <input type="checkbox" name="inventor" value="python">
+                <span class="truncate"> Go Lang <img type="icon" src="https://go.dev/blog/go-brand/Go-Logo/PNG/Go-Logo_Blue.png" height="25px" width="25px"></span>
+            </label>
+            <br>
+            <label>
+                <input type="checkbox" name="inventor" value="python">
+                <span class="truncate"> Json <img type="icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/JSON_vector_logo.svg/1024px-JSON_vector_logo.svg.png" height="25px" width="25px"></span>
+            </label>
+            <br>
+            
+        </form>
+    </main>
+</body>
+</html>
