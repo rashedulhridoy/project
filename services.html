@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: #222;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 60px;
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+        }
+        .card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            width: 300px;
+            height: 300px;
+            align-items: center;
+            padding: 30px 20px;
+            border-radius: 20px;
+            border-style: solid;
+            border-color: #333;
+            border: none;
+            margin: 25px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .anim-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0%;
+            background-color: #333;
+            border-radius: 10px;
+            transition: height 0.3s ease, top 0.3s ease;
+        }
+        .card:hover .anim-layer {
+            height: 100%;
+            width: 100%;
+            bottom: 0;
+        }
+        .card:hover {
+            color: #333;
+        }
+        .card:hover a {
+            background-color: white;
+            color: rgb(0, 0, 0);
+            transition: all 0.3s ease-in-out;
+        }
+        .card:hover p, .card:hover h1 {
+            color: white;
+            
+        }
+        .card > h1 {
+            font-size: 28px;
+            margin: 0;
+            z-index: 1;
+        }
+        .card > p {
+            font-size: 18px;
+            text-align: center;
+            z-index: 1;
+        }
+        .card > a {
+            text-decoration: none;
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            z-index: 1;
+            margin-top: 150;
+            position: absolute;
+            bottom: 20px;
+        }
+        .xz{
+            text-align: center;
+            font-size: 40px;
+            margin-top: 25px;
+            color: white;
+
+        }
+    </style>
+</head>
+<body>
+    <h1 class="xz">Our Services</h1>
+    <div class="container">
+        <div class="card">
+            <div class="anim-layer"></div>
+            <h1>Services 1</h1>
+            <p></p>
+            <a href="#" target="_blank" rel="noopener noreferrer">See More</a>
+        </div>
+        <div class="card">
+            <div class="anim-layer"></div>
+            <h1>Services 2</h1>
+            <p></p>
+            <a href="#" target="_blank" rel="noopener noreferrer">See More</a>
+        </div>
+        <div class="card">
+            <div class="anim-layer"></div>
+            <h1>Services 3</h1>
+            <p></p>
+            <a href="#" target="_blank" rel="noopener noreferrer">See More</a>
+        </div>
+    </div>
+</body>
+</html>
